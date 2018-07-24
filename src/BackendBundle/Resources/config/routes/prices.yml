@@ -1,0 +1,18 @@
+prices_index:
+    path:     /prices
+    defaults: { _controller: "BackendBundle:Prices:index" }
+    methods:  GET
+
+prices_edit:
+    path:     /prices/{id}/edit
+    defaults: { _controller: "BackendBundle:Prices:edit" }
+    methods:  [GET, POST]
+
+prices_delete:
+    path:     /prices/{id}/delete
+    defaults: { _controller: "BackendBundle:Prices:delete" }
+
+prices_new:
+    path:     /prices/new
+    defaults: { _controller: "BackendBundle:Prices:new" }
+    methods:  [GET, POST]

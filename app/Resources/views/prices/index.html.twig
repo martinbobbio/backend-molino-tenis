@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Ver precios{% endblock %}
+
+{% block page_title %}<h1 class="text-default">Precios</h1>{% endblock %}
+
+{% block page_title_right %}
+    <a href="{{ path('prices_new') }}" class="btn btn-success btn">Agregar</a>
+{% endblock %}
+
+
+{% block page_content %}
+
+    <style>
+        .left_col{
+            height:1300px;
+        }
+    </style>
+
+    <br><br>
+
+     <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for p in prices %}
+            <tr data-id="{{ p.id }}">
+                <td>{{ p.id }}</td>
+                <td>{{ p.title }}</td>
+                <td>{{ p.type }}</td>
+                <td>{{ p.price }}$</td>
+                <td>{{ p.createAt|date('Y-m-d H:i:s')}}</td>
+                <td>{{ p.updateAt|date('Y-m-d H:i:s')}}</td>
+                <td>
+                <a href="{{ path('prices_edit', {id: p.id})}}" class="btn btn-xs btn-primary">Editar</a>
+                <a href="#" class="btn btn-xs btn-danger btn-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    {{ include('Forms/formDelete.html.twig', {form: delete_form, message: 'Estás seguro que quieres borrar el tipo de evento?', id: 'form-delete', with_submit: false}) }}
+    <script src="{{ asset('js/delete-ajax.js') }}"></script>
+ 
+{% endblock %}

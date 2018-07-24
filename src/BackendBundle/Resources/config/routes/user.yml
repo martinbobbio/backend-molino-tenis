@@ -1,0 +1,8 @@
+user_index:
+    path:     /user
+    defaults: { _controller: "BackendBundle:User:index" }
+    methods:  GET
+
+user_delete:
+    path:     /user/{id}/delete
+    defaults: { _controller: "BackendBundle:User:delete" }

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Home{% endblock %}
+
+{% block page_content %}
+
+    <style>
+        .left_col{
+            height:2200px;
+        }
+    </style>
+
+    {% include 'loader.html.twig' %}
+
+    <section id="main">
+
+
+    <h4>Usuarios</h4>
+
+    <div class="row tile_count">
+        <div class="col-xs-4 tile_stats_count">
+            <span class="count_top"><i class="fa fa-user"></i> Total de usuarios</span>
+            <div class="count green animated pulse">20</div>
+        </div>
+    </div>
+
+    <h4>Partidos</h4>
+
+    <div class="row tile_count">
+        <div class="col-xs-4 tile_stats_count">
+            <span class="count_top">Total de partidos</span>
+            <div class="count green animated pulse">65</div>
+        </div>
+        <div class="col-xs-4 tile_stats_count">
+            <span class="count_top">Total de partidos en <strong>estado jugado</strong></span>
+            <div class="count green animated pulse">60</div>
+        </div>
+        <div class="col-xs-4 tile_stats_count">
+            <span class="count_top">Total de partidos en <strong>estado cancelado</strong></span>
+            <div class="count red animated pulse">5</div>
+        </div>
+    </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,27 @@
+backend_home:
+  resource: "@BackendBundle/Resources/config/routes/home.yml"
+  prefix: /
+
+backend_notice:
+  resource: "@BackendBundle/Resources/config/routes/notice.yml"
+  prefix: /
+
+backend_user:
+  resource: "@BackendBundle/Resources/config/routes/user.yml"
+  prefix: /
+
+backend_event:
+  resource: "@BackendBundle/Resources/config/routes/event.yml"
+  prefix: /
+
+backend_type_event:
+  resource: "@BackendBundle/Resources/config/routes/typeevent.yml"
+  prefix: /
+
+backend_log:
+  resource: "@BackendBundle/Resources/config/routes/log.yml"
+  prefix: /
+
+backend_prices:
+  resource: "@BackendBundle/Resources/config/routes/prices.yml"
+  prefix: /

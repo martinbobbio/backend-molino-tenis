@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Ver tipos de eventos{% endblock %}
+
+{% block page_title %}<h1 class="text-default">Tipos de eventos</h1>{% endblock %}
+
+{% block page_title_right %}
+    <a href="{{ path('type_event_new') }}" class="btn btn-success btn">Agregar</a>
+{% endblock %}
+
+
+{% block page_content %}
+
+    <style>
+        .left_col{
+            height:1300px;
+        }
+    </style>
+
+    <br><br>
+
+     <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for te in type_event %}
+            <tr data-id="{{ te.id }}">
+                <td>{{ te.id }}</td>
+                <td>{{ te.title }}</td>
+                <td>{{ te.createAt|date('Y-m-d H:i:s')}}</td>
+                <td>{{ te.updateAt|date('Y-m-d H:i:s')}}</td>
+                <td>
+                <a href="{{ path('type_event_edit', {id: te.id})}}" class="btn btn-xs btn-primary">Editar</a>
+                <a href="#" class="btn btn-xs btn-danger btn-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    {{ include('Forms/formDelete.html.twig', {form: delete_form, message: 'Estás seguro que quieres borrar el tipo de evento?', id: 'form-delete', with_submit: false}) }}
+    <script src="{{ asset('js/delete-ajax.js') }}"></script>
+ 
+{% endblock %}

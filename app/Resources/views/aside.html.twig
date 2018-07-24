@@ -1,0 +1,64 @@
+<div class="col-md-3 left_col">
+    <div class="left_col scroll-view">
+        <div class="navbar nav_title" style="border: 0;">
+            <a href="#" class="site_title"><span>Admin - El Molino</span></a>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="profile clearfix">
+            <div class="profile_pic">
+                <img src="{{ asset('images/')}}{{app.user.photo}}" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+                <span>Bienvenido</span>
+                <h2>{{app.user.firstname}} {{app.user.lastname}}</h2>
+            </div>
+        </div>
+
+        <br><br>
+
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+            <div class="menu_section active">
+                <h3>General</h3>
+                <ul class="nav side-menu" style="">
+                    <li class=""><a href="{{ path('home_index') }}"><i class="fa fa-bar-chart"></i>Inicio</a></li>
+                </ul>
+            </div>
+
+            <div class="menu_section active">
+                <h3>Entidades</h3>
+                <ul class="nav side-menu" style="">
+                    <ul class="nav side-menu" style="">
+                        <li class=""><a href="{{ path('user_index') }}"><i class="fa fa-user"></i>Usuarios</a></li>
+                    </ul>
+                    <li class=""><a><i class="fa fa-calendar"></i>Eventos<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none;">
+                            <li><a href="{{ path('event_new') }}">Agregar evento</a></li>
+                            <li><a href="{{ path('event_index') }}">Ver eventos</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a><i class="fa fa-usd"></i>Precios<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none;">
+                            <li><a href="{{ path('prices_new') }}">Agregar precio</a></li>
+                            <li><a href="{{ path('prices_index') }}">Ver precios</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a><i class="fa fa-book"></i>Noticias<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none;">
+                            <li><a href="{{ path('notice_new') }}">Agregar noticia</a></li>
+                            <li><a href="{{ path('notice_index') }}">Ver noticias</a></li>
+                            
+                        </ul>
+                    </li>
+                    <ul class="nav side-menu" style="">
+                        <li class=""><a href="{{ path('log_index') }}"><i class="fa fa-desktop"></i>Consola</a></li>
+                    </ul>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>

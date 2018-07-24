@@ -1,0 +1,3 @@
+log_index:
+  path: /log
+  defaults: { _controller: BackendBundle:Log:index }

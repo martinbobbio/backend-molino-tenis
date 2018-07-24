@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Ver eventos{% endblock %}
+
+{% block page_title %}<h1 class="text-default">Eventos</h1>{% endblock %}
+
+{% block page_title_right %}
+    <a href="{{ path('type_event_index') }}" class="btn btn-default btn">Tipos de eventos</a>
+    <a href="{{ path('event_new') }}" class="btn btn-success btn">Agregar</a>
+{% endblock %}
+
+
+{% block page_content %}
+
+    <style>
+        .left_col{
+            height:1300px;
+        }
+    </style>
+
+    <br><br>
+
+     <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Fecha</th>
+                <th>Cantidad</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Recaudación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Fecha</th>
+                <th>Cantidad</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Recaudación</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for e in event %}
+            <tr data-id="{{ e.id }}">
+                <td>{{ e.id }}</td>
+                <td>{{ e.title }}</td>
+                <td>{{ e.createAt|date('Y-m-d')}} {{e.hour}}hs</td>
+                <td>{{ e.hoursString }}</td>
+                <td>{{ e.type }}</td>
+                <td>
+                    {% if e.isSuspended == 1 %}
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    {% elseif e.isSuspended == 0 %}
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                    {% endif %}
+                </td>
+                <td>{{ e.recaudation }}$</td>
+                <td>
+                <a href="{{ path('event_edit', {id: e.id})}}" class="btn btn-xs btn-primary">Editar</a>
+                <a href="#" class="btn btn-xs btn-danger btn-delete">Eliminar</a>
+                    {% if e.isSuspended == 1 %}
+                        <a href="{{ path('event_suspended', {id: e.id})}}" class="btn btn-xs btn-default">Cancelar suspensión</a>
+                    {% elseif e.isSuspended == 0 %}
+                        <a href="{{ path('event_suspended', {id: e.id})}}" class="btn btn-xs btn-default">Suspender</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    {{ include('Forms/formDelete.html.twig', {form: delete_form, message: 'Estás seguro que quieres borrar el evento?', id: 'form-delete', with_submit: false}) }}
+    <script src="{{ asset('js/delete-ajax.js') }}"></script>
+ 
+{% endblock %}

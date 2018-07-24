@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Ver usuarios{% endblock %}
+
+{% block page_title %}<h1 class="text-default">Usuarios</h1>{% endblock %}
+
+{% block page_title_right %}
+{% endblock %}
+
+
+{% block page_content %}
+
+    <style>
+        .left_col{
+            height:1300px;
+        }
+    </style>
+
+    <br><br>
+
+     <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Persona</th>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Persona</th>
+                <th>Usuario</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for u in user %}
+            <tr data-id="{{ u.id }}">
+                <td>{{ u.id }}</td>
+                <td>
+                    <img src="{{ asset('images/')}}{{app.user.photo}}" class="img-circle" height="50" width="50">
+                    <span>{{ u.firstname }} {{u.lastname}}</span>
+                </td>
+                <td>{{ u.username }}</td>
+                <td>{{ u.email }}</td>
+                <td>
+                    <a href="" class="btn btn-xs disabled btn-danger btn-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+{% endblock %}

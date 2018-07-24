@@ -1,0 +1,92 @@
+================================================================================
+Deployment started at Fri, 01 Dec 2017 18:41:01 -0200
+================================================================================
+
+===> Initializing configuration
+---> Processing the configuration options of the deployer class
+binDir                     : app
+cacheDir                   : app/cache
+composerInstallFlags       : --no-dev --prefer-dist --no-interaction --quiet
+composerOptimizeFlags      : --optimize
+configDir                  : app/config
+consoleBinaryPath          : 
+controllersToRemove        : ["web/app_dev.php"]
+deployDir                  : public_html/admin-tenis
+dumpAsseticAssets          : true
+installWebAssets           : true
+keepReleases               : 5
+localProjectDir            : /var/www/html/documentos/Symfony/davinci-tennisstar-backend
+logDir                     : app/logs
+permissionGroup            : 
+permissionMethod           : chmod
+permissionMode             : 0777
+permissionUser             : 
+remoteComposerBinaryPath   : /usr/local/bin/composer
+remotePhpBinaryPath        : php
+repositoryBranch           : master
+repositoryUrl              : git@github.com:martinbobbio/davinci-tennisstar-backend.git
+resetOpCacheFor            : 
+servers                    : u277128184@31.170.166.124
+sharedDirs                 : ["app/logs/"]
+sharedFiles                : ["app/config/parameters.yml"]
+srcDir                     : src
+symfonyEnvironment         : prod
+templatesDir               : app/Resources/views
+updateRemoteComposerBinary : false
+useSshAgentForwarding      : true
+warmupCache                : true
+webDir                     : web
+writableDirs               : ["app/cache/","app/logs/"]
+---> Checking technical requirements
+[localhost] Executing command: "cd /var/www/html/documentos/Symfony/davinci-tennisstar-backend && which git"
+| out :: /usr/bin/git
+[OK] "git" command exists
+[localhost] Executing command: "cd /var/www/html/documentos/Symfony/davinci-tennisstar-backend && which ssh"
+| out :: /usr/bin/ssh
+[OK] "ssh" command exists
+[u277128184@31.170.166.124] Executing command: "echo 1500219249"
+| out :: 1500219249
+[OK] The server allows to login via SSH from the local machine
+[u277128184@31.170.166.124] Executing command: "which /usr/local/bin/composer"
+| out :: /usr/local/bin/composer
+[OK] "/usr/local/bin/composer" command exists
+Executing __ beforeStartingDeploy __ hook
+
+===> Starting the deployment
+---> Initializing server options
+Enabling SSH agent forwarding for localhost server
+Enabling SSH agent forwarding for u277128184@31.170.166.124 server
+Setting the deploy_dir property for u277128184@31.170.166.124 server
+---> Creating the remote directory layout
+[u277128184@31.170.166.124] Executing command: "(export SYMFONY_ENV=prod; mkdir -p public_html/admin-tenis && mkdir -p public_html/admin-tenis/releases && mkdir -p public_html/admin-tenis/shared)"
+[u277128184@31.170.166.124] Executing command: "(export SYMFONY_ENV=prod; export _release_path="public_html/admin-tenis/releases/$(date +%Y%m%d%H%M%S)" && mkdir -p $_release_path && echo $_release_path)"
+| out :: public_html/admin-tenis/releases/20171201204149
+---> Initializing server directory layout
+Executing __ beforeUpdating __ hook
+Nothing to execute
+
+===> Updating app code
+---> Getting the revision ID of the code repository
+[localhost] Executing command: "(export SYMFONY_ENV=prod; cd /var/www/html/documentos/Symfony/davinci-tennisstar-backend && git ls-remote git@github.com:martinbobbio/davinci-tennisstar-backend.git master)"
+| out :: 6629a0905d79c6d878a8bd956c04c4b660087a4c	refs/heads/master
+Code revision hash = 6629a0905d79c6d878a8bd956c04c4b660087a4c
+---> Updating code base with remote_cache strategy
+[u277128184@31.170.166.124] Executing command: "(export SYMFONY_ENV=prod; cd public_html/admin-tenis/releases/20171201204149 && if [ -d public_html/admin-tenis/repo ]; then cd public_html/admin-tenis/repo && git fetch -q origin && git fetch --tags -q origin && git reset -q --hard 6629a0905d79c6d878a8bd956c04c4b660087a4c && git clean -q -d -x -f; else git clone -q -b master git@github.com:martinbobbio/davinci-tennisstar-backend.git public_html/admin-tenis/repo && cd public_html/admin-tenis/repo && git checkout -q -b deploy 6629a0905d79c6d878a8bd956c04c4b660087a4c; fi)"
+Copying the updated code to the new release directory
+[u277128184@31.170.166.124] Executing command: "(export SYMFONY_ENV=prod; cd public_html/admin-tenis/releases/20171201204149 && cp -RPp public_html/admin-tenis/repo/* public_html/admin-tenis/releases/20171201204149)"
+| err :: cp: target ‘public_html/admin-tenis/releases/20171201204149’ is not a directory
+
+********************************************************************************
+[ERROR] Cancelling the deployment and reverting the changes
+********************************************************************************
+
+
+********************************************************************************
+A log file with all the error details has been generated in /var/www/html/documentos/Symfony/davinci-tennisstar-backend/app/logs/deploy_prod.log
+********************************************************************************
+
+Executing __ beforeCancelingDeploy __ hook
+Nothing to execute
+---> Deleting the last release directory
+[u277128184@31.170.166.124] Executing command: "(export SYMFONY_ENV=prod; cd public_html/admin-tenis/releases/20171201204149 && export _last_release_dirname=$(ls -r1 public_html/admin-tenis/releases | head -n 1) && rm -fr public_html/admin-tenis/releases/$_last_release_dirname)"
+| err :: ls: cannot access public_html/admin-tenis/releases: No such file or directory

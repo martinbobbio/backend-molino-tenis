@@ -1,0 +1,23 @@
+event_index:
+    path:     /event
+    defaults: { _controller: "BackendBundle:Event:index" }
+    methods:  GET
+
+event_edit:
+    path:     /event/{id}/edit
+    defaults: { _controller: "BackendBundle:Event:edit" }
+    methods:  [GET, POST]
+
+event_suspended:
+    path:     /event/{id}/suspended
+    defaults: { _controller: "BackendBundle:Event:suspended" }
+    methods:  [GET, POST]
+
+event_delete:
+    path:     /event/{id}/delete
+    defaults: { _controller: "BackendBundle:Event:delete" }
+
+event_new:
+    path:     /event/new
+    defaults: { _controller: "BackendBundle:Event:new" }
+    methods:  [GET, POST]

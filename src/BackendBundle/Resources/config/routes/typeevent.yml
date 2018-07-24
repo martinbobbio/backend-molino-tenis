@@ -1,0 +1,19 @@
+type_event_index:
+    path:     /typeevent
+    defaults: { _controller: "BackendBundle:TypeEventAux:index" }
+    methods:  GET
+
+type_event_edit:
+    path:     /typeevent/{id}/edit
+    defaults: { _controller: "BackendBundle:TypeEventAux:edit" }
+    methods:  [GET, POST]
+
+type_event_delete:
+    path:     /typeevent/{id}/delete
+    defaults: { _controller: "BackendBundle:TypeEventAux:delete" }
+
+
+type_event_new:
+    path:     /typeevent/new
+    defaults: { _controller: "BackendBundle:TypeEventAux:new" }
+    methods:  [GET, POST]
