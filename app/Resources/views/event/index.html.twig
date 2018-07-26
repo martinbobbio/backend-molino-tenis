@@ -29,7 +29,6 @@
                 <th>Cantidad</th>
                 <th>Tipo</th>
                 <th>Estado</th>
-                <th>Recaudación</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -41,7 +40,6 @@
                 <th>Cantidad</th>
                 <th>Tipo</th>
                 <th>Estado</th>
-                <th>Recaudación</th>
                 <th>Acciones</th>
             </tr>
         </tfoot>
@@ -60,7 +58,6 @@
                         <i class="fa fa-check" aria-hidden="true"></i>
                     {% endif %}
                 </td>
-                <td>{{ e.recaudation }}$</td>
                 <td>
                 <a href="{{ path('event_edit', {id: e.id})}}" class="btn btn-xs btn-primary">Editar</a>
                 <a href="#" class="btn btn-xs btn-danger btn-delete">Eliminar</a>

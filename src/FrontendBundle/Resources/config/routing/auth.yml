@@ -1,0 +1,4 @@
+frontend_check_login:
+    path:     /login
+    defaults: { _controller: "FrontendBundle:Auth:checkLogin" }
+    methods:  [POST]

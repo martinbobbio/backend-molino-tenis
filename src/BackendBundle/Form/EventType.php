@@ -54,12 +54,7 @@ class EventType extends AbstractType
                 3 => '2 horas',
                 4 => '2 horas y media',
                 5 => '3 horas',
-            ),'label' => 'Cantidad'))
-            ->add('recaudation', MoneyType::class, array(
-            'label' => 'Recaudación',
-            'currency' => 'USD',
-            'required' => false,
-        ));
+            ),'label' => 'Cantidad'));
     }
     
     /**

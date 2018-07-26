@@ -1,0 +1,9 @@
+frontend_get_spend_by_month:
+    path:     /get-spend-by-month/{month}
+    defaults: { _controller: "FrontendBundle:Spend:getSpendByMonth" }
+    methods:  GET
+
+frontend_get_spend_by_month_all:
+    path:     /get-spend-by-month-all/{month}
+    defaults: { _controller: "FrontendBundle:Spend:getSpendByMonthAll" }
+    methods:  GET

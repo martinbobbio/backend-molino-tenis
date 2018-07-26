@@ -1,0 +1,18 @@
+spend_index:
+    path:     /spend
+    defaults: { _controller: "BackendBundle:Spend:index" }
+    methods:  GET
+
+spend_edit:
+    path:     /spend/{id}/edit
+    defaults: { _controller: "BackendBundle:Spend:edit" }
+    methods:  [GET, POST]
+
+spend_delete:
+    path:     /spend/{id}/delete
+    defaults: { _controller: "BackendBundle:Spend:delete" }
+
+spend_new:
+    path:     /spend/new
+    defaults: { _controller: "BackendBundle:Spend:new" }
+    methods:  [GET, POST]

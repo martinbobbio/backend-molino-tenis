@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }}Ver consola{% endblock %}
+{% block title %}{{ parent() }}Ver historial{% endblock %}
 
-{% block page_title %}<h1 class="text-default">Consola</h1>{% endblock %}
+{% block page_title %}<h1 class="text-default">Historial</h1>{% endblock %}
 
 {% block page_title_right %}
 {% endblock %}
@@ -16,36 +16,24 @@
         }
     </style>
 
-    <br><br>
+    <br>
 
-     <table id="example" class="display" cellspacing="0" width="100%" >
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Usuario</th>
-                <th>Accion</th>
-                <th>Fecha</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Id</th>
-                <th>Usuario</th>
-                <th>Accion</th>
-                <th>Fecha</th>
-            </tr>
-        </tfoot>
-        <tbody>
-            {% for l in log %}
-            <tr data-id="{{ l.id }}">
-                <td>{{ l.id }}</td>
-                <td>{{ l.user.username }}</td>
-                <td>{{ l.title }}</td>
-                <td>{{ l.updateAt|date('Y-m-d H:i:s')}}</td>
-            </tr>
-            {% endfor %}
-            
-        </tbody>
-    </table>
+    <ul class="list-group">
+        {% for l in log %}
+            {% if l.type == 'new' %}
+            <li class="list-group-item list-group-item-success">
+                <span class="bold">{{ l.user.username }}({{ l.updateAt|date('Y-m-d H:i:s')}}):</span> {{ l.title }}
+            </li>
+            {% elseif l.type == 'edit' %}
+            <li class="list-group-item list-group-item-info">
+                <span class="bold">{{ l.user.username }}({{ l.updateAt|date('Y-m-d H:i:s')}}):</span> {{ l.title }}
+            </li>
+            {% elseif l.type == 'delete' %}
+            <li class="list-group-item list-group-item-danger">
+                <span class="bold">{{ l.user.username }}({{ l.updateAt|date('Y-m-d H:i:s')}}):</span> {{ l.title }}
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
 
 {% endblock %}

@@ -1,0 +1,3 @@
+email_index:
+  path: /emails
+  defaults: { _controller: BackendBundle:Email:index }

@@ -1,0 +1,4 @@
+frontend_get_events:
+    path:     /get-events/
+    defaults: { _controller: "FrontendBundle:Event:getEvents" }
+    methods:  GET

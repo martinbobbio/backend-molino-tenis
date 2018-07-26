@@ -2,6 +2,22 @@ frontend_notice:
         resource: "@FrontendBundle/Resources/config/routing/notice.yml"
         prefix:   /notice
 
-frontend_map:
-        resource: "@FrontendBundle/Resources/config/routing/map.yml"
-        prefix:   /map
+frontend_events:
+        resource: "@FrontendBundle/Resources/config/routing/events.yml"
+        prefix:   /events
+
+frontend_typeevent:
+        resource: "@FrontendBundle/Resources/config/routing/typeevent.yml"
+        prefix:   /typeevent
+
+frontend_prices:
+        resource: "@FrontendBundle/Resources/config/routing/prices.yml"
+        prefix:   /prices
+
+frontend_spend:
+        resource: "@FrontendBundle/Resources/config/routing/spend.yml"
+        prefix:   /spend
+
+frontend_spend:
+        resource: "@FrontendBundle/Resources/config/routing/auth.yml"
+        prefix:   /auth

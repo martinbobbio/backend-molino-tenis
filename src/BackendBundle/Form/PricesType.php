@@ -28,7 +28,7 @@ class PricesType extends AbstractType
         ->add('price', MoneyType::class, array(
             'label' => 'Recaudación',
             'currency' => 'USD',
-            'required' => false,
+            'required' => true,
         ));
     }
     

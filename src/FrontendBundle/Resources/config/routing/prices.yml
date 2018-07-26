@@ -1,0 +1,4 @@
+frontend_get_prices:
+    path:     /get-prices/
+    defaults: { _controller: "FrontendBundle:Prices:getPrices" }
+    methods:  GET

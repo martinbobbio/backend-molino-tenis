@@ -25,3 +25,11 @@ backend_log:
 backend_prices:
   resource: "@BackendBundle/Resources/config/routes/prices.yml"
   prefix: /
+
+backend_spend:
+  resource: "@BackendBundle/Resources/config/routes/spend.yml"
+  prefix: /
+
+backend_email:
+  resource: "@BackendBundle/Resources/config/routes/email.yml"
+  prefix: /

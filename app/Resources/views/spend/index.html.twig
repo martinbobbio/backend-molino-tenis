@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Ver recaudaciones{% endblock %}
+
+{% block page_title %}<h1 class="text-default">Recaudaciones</h1>{% endblock %}
+
+{% block page_title_right %}
+    <a href="{{ path('prices_index') }}" class="btn btn-default btn">Precios</a>
+    <a href="{{ path('spend_new') }}" class="btn btn-success btn">Agregar</a>
+{% endblock %}
+
+
+{% block page_content %}
+
+    <style>
+        .left_col{
+            height:1300px;
+        }
+    </style>
+
+    <br><br>
+
+     <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Total</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+                <th>Total</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for s in spend %}
+            <tr data-id="{{ s.id }}">
+                <td>{{ s.id }}</td>
+                <td>{{ s.title }}</td>
+                <td>{{ s.type }}</td>
+                <td>{{ s.price }}$</td>
+                <td>{{ s.total }}$</td>
+                <td>{{ s.count }}</td>
+                <td>{{ s.createAt|date('Y-m-d H:i:s')}}</td>
+                <td>
+                <a href="{{ path('spend_edit', {id: s.id})}}" class="btn btn-xs btn-primary">Editar</a>
+                <a href="#" class="btn btn-xs btn-danger btn-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    {{ include('Forms/formDelete.html.twig', {form: delete_form, message: 'Estás seguro que quieres borrar la recaudacion?', id: 'form-delete', with_submit: false}) }}
+    <script src="{{ asset('js/delete-ajax.js') }}"></script>
+ 
+{% endblock %}

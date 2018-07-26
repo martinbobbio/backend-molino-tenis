@@ -24,6 +24,12 @@
                 <h3>General</h3>
                 <ul class="nav side-menu" style="">
                     <li class=""><a href="{{ path('home_index') }}"><i class="fa fa-bar-chart"></i>Inicio</a></li>
+                    <ul class="nav side-menu" style="">
+                        <li class=""><a href="{{ path('email_index') }}"><i class="fa fa-envelope-o"></i>Emails</a></li>
+                    </ul>
+                    <ul class="nav side-menu" style="">
+                        <li class=""><a href="{{ path('log_index') }}"><i class="fa fa-desktop"></i>Historial</a></li>
+                    </ul>
                 </ul>
             </div>
 
@@ -37,11 +43,13 @@
                         <ul class="nav child_menu" style="display: none;">
                             <li><a href="{{ path('event_new') }}">Agregar evento</a></li>
                             <li><a href="{{ path('event_index') }}">Ver eventos</a></li>
+                            <li><a href="{{ path('type_event_index') }}">Ver tipos de eventos</a></li>
                         </ul>
                     </li>
-                    <li class=""><a><i class="fa fa-usd"></i>Precios<span class="fa fa-chevron-down"></span></a>
+                    <li class=""><a><i class="fa fa-usd"></i>Dinero<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none;">
-                            <li><a href="{{ path('prices_new') }}">Agregar precio</a></li>
+                            <li><a href="{{ path('spend_new') }}">Agregar recaudación</a></li>
+                            <li><a href="{{ path('spend_index') }}">Ver recaudaciones</a></li>
                             <li><a href="{{ path('prices_index') }}">Ver precios</a></li>
                         </ul>
                     </li>
@@ -52,9 +60,6 @@
                             
                         </ul>
                     </li>
-                    <ul class="nav side-menu" style="">
-                        <li class=""><a href="{{ path('log_index') }}"><i class="fa fa-desktop"></i>Consola</a></li>
-                    </ul>
                 </ul>
             </div>
 

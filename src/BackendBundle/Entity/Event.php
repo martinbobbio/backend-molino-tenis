@@ -51,31 +51,6 @@ class Event
     {
         return $this->title;
     }
-
-    /**
-     * @var string
-     * @ORM\Column(name="recaudation", type="integer", nullable=true)
-     */
-     private $recaudation;
-     /**
-     * Set recaudation
-     *
-     * @param string $recaudation
-     */
-    public function setRecaudation($recaudation)
-    {
-        $this->recaudation = $recaudation;
-        return $this;
-    }
-    /**
-     * Get recaudation
-     *
-     * @return string 
-     */
-    public function getRecaudation()
-    {
-        return $this->recaudation;
-    }
    
     /**
      * @var string
