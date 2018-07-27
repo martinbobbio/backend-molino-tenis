@@ -19,6 +19,7 @@
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
       <parameter key="OneupUploaderBundle">Oneup\UploaderBundle\OneupUploaderBundle</parameter>
       <parameter key="FrontendBundle">FrontendBundle\FrontendBundle</parameter>
+      <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -80,6 +81,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">/var/www/html/documentos/Symfony/01-Molino/src/FrontendBundle</parameter>
         <parameter key="namespace">FrontendBundle</parameter>
+      </parameter>
+      <parameter key="KnpPaginatorBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\PaginatorBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -743,6 +749,12 @@
     <parameter key="oneup_uploader.maxsize" type="collection">
       <parameter key="notices">2097152</parameter>
     </parameter>
+    <parameter key="knp_paginator.class">Knp\Component\Pager\Paginator</parameter>
+    <parameter key="knp_paginator.helper.processor.class">Knp\Bundle\PaginatorBundle\Helper\Processor</parameter>
+    <parameter key="knp_paginator.template.pagination">KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig</parameter>
+    <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
+    <parameter key="knp_paginator.template.sortable">KnpPaginatorBundle:Pagination:sortable_link.html.twig</parameter>
+    <parameter key="knp_paginator.page_range">5</parameter>
     <parameter key="web_profiler.controller.profiler.class">Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController</parameter>
     <parameter key="web_profiler.controller.router.class">Symfony\Bundle\WebProfilerBundle\Controller\RouterController</parameter>
     <parameter key="web_profiler.controller.exception.class">Symfony\Bundle\WebProfilerBundle\Controller\ExceptionController</parameter>
@@ -1105,6 +1117,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ro.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ro.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ro.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ro.xliff</argument>
           </argument>
           <argument key="gl" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.gl.xlf</argument>
@@ -1117,6 +1130,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.hu.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.hu.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.hu.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.hu.xliff</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nn.xlf</argument>
@@ -1162,12 +1176,14 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.it.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.it.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.it.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.it.xliff</argument>
           </argument>
           <argument key="uk" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.uk.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.uk.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.uk.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.uk.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.uk.xliff</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ja.xlf</argument>
@@ -1203,6 +1219,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sv.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.sv.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.sv.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.sv.xliff</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.et.xlf</argument>
@@ -1215,6 +1232,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.fr.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fr.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fr.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.fr.xliff</argument>
           </argument>
           <argument key="pl" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pl.xlf</argument>
@@ -1222,6 +1240,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.pl.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.pl.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pl.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.pl.xliff</argument>
           </argument>
           <argument key="bg" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.bg.xlf</argument>
@@ -1236,6 +1255,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.es.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.es.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.es.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.es.xliff</argument>
           </argument>
           <argument key="lv" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lv.xlf</argument>
@@ -1254,6 +1274,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ar.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ar.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ar.xlf</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ar.xliff</argument>
           </argument>
           <argument key="zh_TW" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_TW.xlf</argument>
@@ -1291,11 +1312,13 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ru.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.ru.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.ru.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ru.xliff</argument>
           </argument>
           <argument key="id" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.id.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.id.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.id.xlf</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.id.xliff</argument>
           </argument>
           <argument key="hr" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hr.xlf</argument>
@@ -1325,6 +1348,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.fa.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.fa.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.fa.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.fa.xliff</argument>
           </argument>
           <argument key="en" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf</argument>
@@ -1333,6 +1357,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.en.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.en.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/oneup/uploader-bundle/Oneup/UploaderBundle/Resources/translations/OneupUploaderBundle.en.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.en.xliff</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.de.xlf</argument>
@@ -1340,6 +1365,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.de.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.de.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.de.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.de.xliff</argument>
           </argument>
           <argument key="da" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.da.xlf</argument>
@@ -1347,6 +1373,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.da.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.da.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.da.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.da.xliff</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fi.xlf</argument>
@@ -1370,6 +1397,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.pt_BR.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pt_BR.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.pt_BR.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.pt_BR.xliff</argument>
           </argument>
           <argument key="lt" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lt.xlf</argument>
@@ -1377,6 +1405,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.lt.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.lt.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.lt.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.lt.xliff</argument>
           </argument>
           <argument key="nl" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nl.xlf</argument>
@@ -1384,6 +1413,7 @@
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.nl.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.nl.yml</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/validators.nl.yml</argument>
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.nl.xliff</argument>
           </argument>
           <argument key="ua" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ua.xlf</argument>
@@ -1391,6 +1421,12 @@
           <argument key="pt_PT" type="collection">
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.pt_PT.xlf</argument>
             <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/translations/FOSUserBundle.pt_PT.yml</argument>
+          </argument>
+          <argument key="sw" type="collection">
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.sw.xliff</argument>
+          </argument>
+          <argument key="ky" type="collection">
+            <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ky.xliff</argument>
           </argument>
         </argument>
       </argument>
@@ -2307,6 +2343,14 @@
         </argument>
         <argument>0</argument>
       </call>
+      <call method="addListenerService">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument>knp_paginator.subscriber.sliding_pagination</argument>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
       <call method="addSubscriberService">
         <argument>response_listener</argument>
         <argument>Symfony\Component\HttpKernel\EventListener\ResponseListener</argument>
@@ -2403,6 +2447,22 @@
         <argument>web_profiler.debug_toolbar</argument>
         <argument>Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener</argument>
       </call>
+      <call method="addSubscriberService">
+        <argument>knp_paginator.subscriber.paginate</argument>
+        <argument>Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber</argument>
+      </call>
+      <call method="addSubscriberService">
+        <argument>knp_paginator.subscriber.sortable</argument>
+        <argument>Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber</argument>
+      </call>
+      <call method="addSubscriberService">
+        <argument>knp_paginator.subscriber.filtration</argument>
+        <argument>Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber</argument>
+      </call>
+      <call method="addSubscriberService">
+        <argument>knp_paginator.subscriber.sliding_pagination</argument>
+        <argument>Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber</argument>
+      </call>
     </service>
     <service id="debug.controller_resolver" class="Symfony\Component\HttpKernel\Controller\TraceableControllerResolver">
       <argument type="service">
@@ -2440,7 +2500,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5b5a1704b71828.07982483</argument>
+            <argument>5b5b2fb761a500.37982688</argument>
           </service>
         </argument>
       </argument>
@@ -2729,7 +2789,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5b5a1704b71828.07982483</argument>
+            <argument>5b5b2fb761a500.37982688</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2997,6 +3057,9 @@
       </call>
       <call method="addExtension">
         <argument type="service" id="oneup_uploader.twig.extension.uploader"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="knp_paginator.twig.extension.pagination"/>
       </call>
       <call method="addExtension">
         <argument type="service">
@@ -3639,6 +3702,46 @@
       </argument>
       <argument>notices</argument>
     </service>
+    <service id="knp_paginator" class="Knp\Component\Pager\Paginator" lazy="true">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <call method="setDefaultPaginatorOptions">
+        <argument type="collection">
+          <argument key="pageParameterName">page</argument>
+          <argument key="sortFieldParameterName">sort</argument>
+          <argument key="sortDirectionParameterName">direction</argument>
+          <argument key="filterFieldParameterName">filterField</argument>
+          <argument key="filterValueParameterName">filterValue</argument>
+          <argument key="distinct">true</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="knp_paginator.subscriber.paginate" class="Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sortable" class="Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.filtration" class="Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sliding_pagination" class="Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <argument type="collection">
+        <argument key="defaultPaginationTemplate">KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig</argument>
+        <argument key="defaultSortableTemplate">KnpPaginatorBundle:Pagination:sortable_link.html.twig</argument>
+        <argument key="defaultFiltrationTemplate">@KnpPaginator/Pagination/filtration.html.twig</argument>
+        <argument key="defaultPageRange">5</argument>
+      </argument>
+    </service>
+    <service id="knp_paginator.helper.processor" class="Knp\Bundle\PaginatorBundle\Helper\Processor">
+      <argument type="service" id="router"/>
+      <argument type="service" id="translator"/>
+    </service>
+    <service id="knp_paginator.twig.extension.pagination" class="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
+    </service>
     <service id="data_collector.dump" class="Symfony\Component\HttpKernel\DataCollector\DumpDataCollector">
       <tag name="data_collector" id="dump" template="@Debug/Profiler/dump.html.twig" priority="240"/>
       <argument type="service" id="debug.stopwatch" on-invalid="ignore"/>
@@ -4113,8 +4216,8 @@
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>/var/www/html/documentos/Symfony/01-Molino/src/FrontendBundle/Resources/views</argument>
-        <argument>Frontend</argument>
+        <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
         <argument>/var/www/html/documentos/Symfony/01-Molino/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
@@ -4150,6 +4253,7 @@
     <service id="doctrine.orm.default_query_cache" alias="doctrine_cache.providers.doctrine.orm.default_query_cache"/>
     <service id="fos_user.util.username_canonicalizer" alias="fos_user.util.email_canonicalizer"/>
     <service id="fos_user.change_password.form.handler" alias="fos_user.change_password.form.handler.default"/>
+    <service id="knp\component\pager\paginatorinterface" alias="knp_paginator"/>
     <service id="sensio.distribution.webconfigurator" alias="sensio_distribution.webconfigurator"/>
     <service id="console.command.doctrine_bundle_doctrinecachebundle_command_containscommand" alias="doctrine_cache.contains_command"/>
     <service id="console.command.doctrine_bundle_doctrinecachebundle_command_deletecommand" alias="doctrine_cache.delete_command"/>

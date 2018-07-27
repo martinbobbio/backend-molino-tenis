@@ -13,10 +13,16 @@ class LogController extends Controller
 
     //---------------------INDEX------------------------------
 
-    public function indexAction(){
+    public function indexAction(Request $request){
         
         $con = $this->getDoctrine()->getManager();
-        $log = $con->getRepository('BackendBundle:Log')->findAll();
+        $logQuery = $con->getRepository('BackendBundle:Log')->findAll();
+
+        $paginator  = $this->get('knp_paginator');
+        $log = $paginator->paginate(
+          $logQuery,
+          $request->query->getInt('page', 1),
+          20);
 
         return $this->render('log/index.html.twig', array('log' => $log));
 
