@@ -1,4 +1,4 @@
 frontend_get_type_event:
-    path:     /get-type-event/
+    path:     /get-type-events/
     defaults: { _controller: "FrontendBundle:TypeEventAux:getTypeEvent" }
     methods:  GET

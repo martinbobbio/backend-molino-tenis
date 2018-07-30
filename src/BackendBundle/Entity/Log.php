@@ -122,7 +122,7 @@ class Log
         return $this->entity;
     }
 
-       /**
+    /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="log")
      * @ORM\JoinColumn(nullable=true)
      */

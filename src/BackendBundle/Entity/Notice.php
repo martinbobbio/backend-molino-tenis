@@ -124,6 +124,20 @@ class Notice
     public $fileIds;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="notice")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $user;
+    public function getUser()
+    {
+        return $this->user;
+    }
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+    }
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="create_at", type="datetime")

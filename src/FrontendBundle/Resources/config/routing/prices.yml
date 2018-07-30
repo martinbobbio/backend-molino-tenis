@@ -2,3 +2,18 @@ frontend_get_prices:
     path:     /get-prices/
     defaults: { _controller: "FrontendBundle:Prices:getPrices" }
     methods:  GET
+
+frontend_set_price:
+    path:     /set-price
+    defaults: { _controller: "FrontendBundle:Prices:setPrice" }
+    methods:  [POST]
+
+frontend_edit_price:
+    path:     /edit-price
+    defaults: { _controller: "FrontendBundle:Prices:editPrice" }
+    methods:  [POST]
+
+frontend_delete_price:
+    path:     /delete-price
+    defaults: { _controller: "FrontendBundle:Prices:deletePrice" }
+    methods:  [POST]
