@@ -52,6 +52,31 @@ class TypeEvent
         return $this->title;
     }
 
+    /**
+     * @var string
+     * @ORM\Column(name="color", type="string", length=10, nullable=false)
+     */
+     private $color;
+     /**
+     * Set color
+     *
+     * @param string $color
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+        return $this;
+    }
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
  
    /**
      * @var \DateTime
