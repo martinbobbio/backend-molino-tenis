@@ -1,0 +1,4 @@
+frontend_get_logs:
+    path:     /get-logs/
+    defaults: { _controller: "FrontendBundle:Log:getLogs" }
+    methods:  GET

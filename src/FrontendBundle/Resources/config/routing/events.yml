@@ -2,3 +2,28 @@ frontend_get_events:
     path:     /get-events/
     defaults: { _controller: "FrontendBundle:Event:getEvents" }
     methods:  GET
+
+frontend_get_events:
+    path:     /get-type-events/
+    defaults: { _controller: "FrontendBundle:Event:getTypeEvents" }
+    methods:  GET
+
+frontend_create_event:
+    path:     /create-event/
+    defaults: { _controller: "FrontendBundle:Event:createEvent" }
+    methods:  [POST]
+
+frontend_edit_event:
+    path:     /edit-event/
+    defaults: { _controller: "FrontendBundle:Event:editEvent" }
+    methods:  [POST]
+
+frontend_delete_event:
+    path:     /delete-event/
+    defaults: { _controller: "FrontendBundle:Event:deleteEvent" }
+    methods:  [POST]
+
+frontend_get_event:
+    path:     /get-event/
+    defaults: { _controller: "FrontendBundle:Event:getEvent" }
+    methods:  [POST]

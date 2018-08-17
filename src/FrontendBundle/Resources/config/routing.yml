@@ -8,7 +8,7 @@ frontend_events:
 
 frontend_typeevent:
         resource: "@FrontendBundle/Resources/config/routing/typeevent.yml"
-        prefix:   /typeevent
+        prefix:   /type-event
 
 frontend_prices:
         resource: "@FrontendBundle/Resources/config/routing/prices.yml"
@@ -18,6 +18,10 @@ frontend_spend:
         resource: "@FrontendBundle/Resources/config/routing/spend.yml"
         prefix:   /spend
 
-frontend_spend:
+frontend_auth:
         resource: "@FrontendBundle/Resources/config/routing/auth.yml"
         prefix:   /auth
+
+frontend_log:
+        resource: "@FrontendBundle/Resources/config/routing/log.yml"
+        prefix:   /log

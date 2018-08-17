@@ -37,6 +37,7 @@ class NoticeController extends Controller
                 $notice->setImgSrc("uploads/notice/".$notice->fileIds);
             }
 
+            $notice->setUser($this->container->get('security.context')->getToken()->getUser());
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('notice_index', array('id' => $notice->getId()));
@@ -63,6 +64,7 @@ class NoticeController extends Controller
                 $notice->setImgSrc("uploads/notice/".$notice->fileIds);
             }
             
+            $notice->setUser($this->container->get('security.context')->getToken()->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($notice);
             $em->flush();

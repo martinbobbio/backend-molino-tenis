@@ -2,3 +2,13 @@ frontend_get_notice:
     path:     /get-notice/
     defaults: { _controller: "FrontendBundle:Notice:getNotice" }
     methods:  GET
+
+frontend_create_notice:
+    path:     /create-notice/
+    defaults: { _controller: "FrontendBundle:Notice:createNotice" }
+    methods:  [POST]
+
+frontend_delete_notice:
+    path:     /delete-notice/
+    defaults: { _controller: "FrontendBundle:Notice:deleteNotice" }
+    methods:  [POST]

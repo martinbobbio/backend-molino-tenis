@@ -24,11 +24,13 @@ class AuthController extends Controller
         
         $arr = [];
         $arr["status"] = $bool;
-        $arr["id"] = $user->getId();
-        $arr["username"] = $user->getUsername();
-        $arr["firstname"] = $user->getFirstname();
-        $arr["lastname"] = $user->getLastname();
-        $arr["photo"] = $user->getPhoto();
+        if($bool == true){
+            $arr["id"] = $user->getId();
+            $arr["username"] = $user->getUsername();
+            $arr["firstname"] = $user->getFirstname();
+            $arr["lastname"] = $user->getLastname();
+            $arr["photo"] = $user->getPhoto();
+        }
         
         return ResponseRest::returnOk($arr);
     }

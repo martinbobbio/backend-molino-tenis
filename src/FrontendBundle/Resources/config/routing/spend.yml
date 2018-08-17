@@ -7,3 +7,13 @@ frontend_get_spend_by_month_all:
     path:     /get-spend-by-month-all/{month}
     defaults: { _controller: "FrontendBundle:Spend:getSpendByMonthAll" }
     methods:  GET
+
+frontend_set_spend:
+    path:     /set-spend
+    defaults: { _controller: "FrontendBundle:Spend:setPrice" }
+    methods:  [POST]
+
+frontend_delete_spend:
+    path:     /delete-spend
+    defaults: { _controller: "FrontendBundle:Spend:deletePrice" }
+    methods:  [POST]
