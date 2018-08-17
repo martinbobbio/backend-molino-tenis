@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Ver precios{% endblock %}
+
+{% block page_title %}<h1 class="text-default">Abonos</h1>{% endblock %}
+
+{% block page_title_right %}
+    <a href="{{ path('finance_new') }}" class="btn btn-success btn">Agregar</a>
+{% endblock %}
+
+
+{% block page_content %}
+
+    <style>
+        .left_col{
+            height:1300px;
+        }
+    </style>
+
+    <br><br>
+
+     <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Persona</th>
+                <th>Abono</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Id</th>
+                <th>Persona</th>
+                <th>Abono</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for f in finance %}
+            <tr data-id="{{ f.id }}">
+                <td>{{ f.id }}</td>
+                <td>{{ f.title }}</td>
+                <td>{{ f.count }}/ {{ f.total }}</td>
+                <td>{{ f.createAt|date('Y-m-d H:i:s')}}</td>
+                <td>{{ f.updateAt|date('Y-m-d H:i:s')}}</td>
+                <td>
+                <a href="{{ path('finance_edit', {id: f.id})}}" class="btn btn-xs btn-primary">Editar</a>
+                <a href="#" class="btn btn-xs btn-danger btn-delete">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    {{ include('Forms/formDelete.html.twig', {form: delete_form, message: 'Estás seguro que quieres borrar el abono?', id: 'form-delete', with_submit: false}) }}
+    <script src="{{ asset('js/delete-ajax.js') }}"></script>
+ 
+{% endblock %}

@@ -30,6 +30,10 @@ backend_spend:
   resource: "@BackendBundle/Resources/config/routes/spend.yml"
   prefix: /
 
+backend_finance:
+  resource: "@BackendBundle/Resources/config/routes/finance.yml"
+  prefix: /
+
 backend_email:
   resource: "@BackendBundle/Resources/config/routes/email.yml"
   prefix: /

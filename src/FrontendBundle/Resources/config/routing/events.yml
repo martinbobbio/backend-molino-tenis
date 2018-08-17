@@ -27,3 +27,8 @@ frontend_get_event:
     path:     /get-event/
     defaults: { _controller: "FrontendBundle:Event:getEvent" }
     methods:  [POST]
+
+frontend_suspend_event:
+    path:     /suspend-event/
+    defaults: { _controller: "FrontendBundle:Event:suspendEvent" }
+    methods:  [POST]

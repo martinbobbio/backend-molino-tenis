@@ -16,8 +16,10 @@ class LogController extends Controller
         header("Access-Control-Allow-Origin: *");
 
         $em = $this->getDoctrine()->getManager();
-        $log = $em->getRepository('BackendBundle:Log')->findBy(array(), array('createAt'=>'desc'));
 
+        $dql = "SELECT l FROM BackendBundle:Log l ORDER BY l.createAt DESC";
+        $log = $em->createQuery($dql)->setMaxResults(100)->getResult();
+        
         $arr = [];
         $arr1 = [];
 

@@ -25,3 +25,7 @@ frontend_auth:
 frontend_log:
         resource: "@FrontendBundle/Resources/config/routing/log.yml"
         prefix:   /log
+
+frontend_finance:
+        resource: "@FrontendBundle/Resources/config/routing/finance.yml"
+        prefix:   /finance

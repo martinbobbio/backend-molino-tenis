@@ -1,0 +1,18 @@
+finance_index:
+    path:     /finance
+    defaults: { _controller: "BackendBundle:Finance:index" }
+    methods:  GET
+
+finance_edit:
+    path:     /finance/{id}/edit
+    defaults: { _controller: "BackendBundle:Finance:edit" }
+    methods:  [GET, POST]
+
+finance_delete:
+    path:     /finance/{id}/delete
+    defaults: { _controller: "BackendBundle:Finance:delete" }
+
+finance_new:
+    path:     /finance/new
+    defaults: { _controller: "BackendBundle:Finance:new" }
+    methods:  [GET, POST]

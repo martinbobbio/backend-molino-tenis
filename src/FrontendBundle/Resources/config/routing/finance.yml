@@ -1,0 +1,19 @@
+frontend_get_finance:
+    path:     /get-finances/
+    defaults: { _controller: "FrontendBundle:Finance:getFinances" }
+    methods:  GET
+
+frontend_set_finance:
+    path:     /create-finance
+    defaults: { _controller: "FrontendBundle:Finance:setFinance" }
+    methods:  [POST]
+
+frontend_delete_finance:
+    path:     /delete-finance
+    defaults: { _controller: "FrontendBundle:Finance:deleteFinance" }
+    methods:  [POST]
+
+frontend_change_finance:
+    path:     /change-finance
+    defaults: { _controller: "FrontendBundle:Finance:changeFinance" }
+    methods:  [POST]

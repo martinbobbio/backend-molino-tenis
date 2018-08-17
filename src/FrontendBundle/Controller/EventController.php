@@ -18,6 +18,7 @@ class EventController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('BackendBundle:Event')->findAll();
+        $typeEvent = $em->getRepository('BackendBundle:TypeEvent')->findAll();
 
         $arr = [];
         $arr1 = [];
@@ -31,6 +32,10 @@ class EventController extends Controller
             $arr1['hour'] = $e->getHour();
             $arr1['is_suspended'] = $e->getIsSuspended();
             $arr1['date'] = $e->getDateMatch()->format('Y-m-d');
+            foreach($typeEvent as $te)
+                if($e->getType() == $te->getTitle())
+                    $arr1['color'] = $te->getColor();
+
             $arr[] = $arr1;
         }
 
@@ -150,6 +155,25 @@ class EventController extends Controller
         $arr['date'] = $e->getDateMatch()->format('Y-m-d');
 
         return ResponseRest::returnOk($arr);
+    }
+
+    public function suspendEventAction(Request $request){
+        
+        header("Access-Control-Allow-Origin: *");
+        $user_id = $request->get("user_id");
+        $id = $request->get("id");
+        $suspended = $request->get("is_suspended");
+
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository('BackendBundle:Event')->findOneById($id);
+        $event->setIsSuspended($suspended);
+        
+        $em->persist($event);
+        $em->flush();
+        $this->createLog("edit",$em->getRepository('BackendBundle:User')->findOneById($user_id));
+
+        return ResponseRest::returnOk("ok");
+
     }
 
     private function createLog($type, $user){
