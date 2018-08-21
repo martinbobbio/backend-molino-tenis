@@ -29,6 +29,7 @@ class NoticeController extends Controller
             $arr1['firstname'] = $n->getUser()->getFirstname();
             $arr1['lastname'] = $n->getUser()->getLastname();
             $arr1['description'] = $n->getDescription();
+            $arr1['userPhoto'] = $n->getUser()->getPhoto();
             $arr1['imgsrc'] = $n->getImgSrc();
             $arr1['date'] = $n->getCreateAt()->format('d/m/y h:i')."hs";;
             $arr[] = $arr1;
