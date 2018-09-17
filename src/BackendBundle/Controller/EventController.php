@@ -14,12 +14,18 @@ class EventController extends Controller
 
     //---------------------INDEX------------------------------
 
-    public function indexAction(){
+    public function indexAction(Request $request){
         
         $con = $this->getDoctrine()->getManager();
-        $event = $con->getRepository('BackendBundle:Event')->findAll();
+        $eventQuery = $con->getRepository('BackendBundle:Event')->findAll();
 
         $delete_form = $this->createCustomForm(':ID','DELETE','event_delete');
+
+        $paginator  = $this->get('knp_paginator');
+        $event = $paginator->paginate(
+          $eventQuery,
+          $request->query->getInt('page', 1),
+          15);
 
         return $this->render('event/index.html.twig', array('event' => $event,'delete_form' => $delete_form->createView() ));
 

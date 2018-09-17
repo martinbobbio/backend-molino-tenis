@@ -1,0 +1,4 @@
+frontend_get_matchs:
+    path:     /get-matchs/
+    defaults: { _controller: "FrontendBundle:Match:getMatchs" }
+    methods:  GET

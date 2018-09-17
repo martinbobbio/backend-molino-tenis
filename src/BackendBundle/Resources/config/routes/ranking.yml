@@ -1,0 +1,18 @@
+ranking_index:
+    path:     /ranking
+    defaults: { _controller: "BackendBundle:Ranking:index" }
+    methods:  GET
+
+ranking_edit:
+    path:     /ranking/{id}/edit
+    defaults: { _controller: "BackendBundle:Ranking:edit" }
+    methods:  [GET, POST]
+
+ranking_delete:
+    path:     /ranking/{id}/delete
+    defaults: { _controller: "BackendBundle:Ranking:delete" }
+
+ranking_new:
+    path:     /ranking/new
+    defaults: { _controller: "BackendBundle:Ranking:new" }
+    methods:  [GET, POST]

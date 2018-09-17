@@ -29,3 +29,11 @@ frontend_log:
 frontend_finance:
         resource: "@FrontendBundle/Resources/config/routing/finance.yml"
         prefix:   /finance
+
+frontend_match:
+        resource: "@FrontendBundle/Resources/config/routing/match.yml"
+        prefix:   /match
+
+frontend_ranking:
+        resource: "@FrontendBundle/Resources/config/routing/ranking.yml"
+        prefix:   /ranking

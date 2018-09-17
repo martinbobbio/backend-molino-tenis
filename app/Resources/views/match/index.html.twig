@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Ver partidos{% endblock %}
+
+{% block page_title %}<h1 class="text-default">Partidos</h1>{% endblock %}
+
+{% block page_title_right %}
+    <a href="{{ path('match_new') }}" class="btn btn-success btn">Agregar partido</a>
+{% endblock %}
+
+
+{% block page_content %}
+
+    <style>
+        .left_col{
+            height:1300px;
+        }
+    </style>
+
+    <br><br>
+
+     <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Resultado</th>
+                <th>Ganador</th>
+                <th>Perdedor</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Título</th>
+                <th>Resultado</th>
+                <th>Ganador</th>
+                <th>Perdedor</th>
+                <th>Tipo</th>
+                <th>Fecha</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for m in match %}
+                <tr data-id="{{ m.id }}">
+                    <td>{{ m.title }}</td>
+                    <td>{{ m.score }}</td>
+                    <td>
+                        <img src="{{ asset('/')}}{{m.playerWin.imgSrc}}" class="img-circle" height="50" width="50">
+                        <span> {{m.playerWin.name}}</span>
+                    </td>
+                    <td>
+                        <img src="{{ asset('/')}}{{m.playerLoss.imgSrc}}" class="img-circle" height="50" width="50">
+                        <span> {{m.playerLoss.name}}</span>
+                    </td>
+                    <td>{{ m.type }}</td>
+                    <td>{{ m.dateMatch|date('Y-m-d H:i:s')}}</td>
+                    <td>
+                    <a href="{{ path('match_edit', {id: m.id})}}" class="btn btn-xs btn-primary">Editar</a>
+                    <a href="#" class="btn btn-xs btn-danger btn-delete">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    {{ include('Forms/formDelete.html.twig', {form: delete_form, message: 'Estás seguro que quieres borrar el partido?', id: 'form-delete', with_submit: false}) }}
+    <script src="{{ asset('js/delete-ajax.js') }}"></script>
+ 
+{% endblock %}

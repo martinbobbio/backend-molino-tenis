@@ -34,6 +34,18 @@ backend_finance:
   resource: "@BackendBundle/Resources/config/routes/finance.yml"
   prefix: /
 
+backend_player:
+  resource: "@BackendBundle/Resources/config/routes/player.yml"
+  prefix: /
+
+backend_ranking:
+  resource: "@BackendBundle/Resources/config/routes/ranking.yml"
+  prefix: /
+
+backend_match:
+  resource: "@BackendBundle/Resources/config/routes/match.yml"
+  prefix: /
+
 backend_email:
   resource: "@BackendBundle/Resources/config/routes/email.yml"
   prefix: /

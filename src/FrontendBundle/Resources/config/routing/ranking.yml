@@ -1,0 +1,4 @@
+frontend_get_rankings:
+    path:     /get-rankings/
+    defaults: { _controller: "FrontendBundle:Ranking:getRankings" }
+    methods:  GET

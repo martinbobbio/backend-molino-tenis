@@ -46,6 +46,24 @@
                             <li><a href="{{ path('type_event_index') }}">Ver tipos de eventos</a></li>
                         </ul>
                     </li>
+                    <li class=""><a><i class="fa fa-address-card"></i>Jugadores<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none;">
+                            <li><a href="{{ path('player_new') }}">Agregar jugador</a></li>
+                            <li><a href="{{ path('player_index') }}">Ver jugadores</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a><i class="fa fa-trophy"></i>Rankings<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none;">
+                            <li><a href="{{ path('ranking_new') }}">Asginar ranking</a></li>
+                            <li><a href="{{ path('ranking_index') }}">Ver rankings</a></li>
+                        </ul>
+                    </li>
+                    <li class=""><a><i class="fa fa-table"></i>Partidos<span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none;">
+                            <li><a href="{{ path('match_new') }}">Agregar partidos</a></li>
+                            <li><a href="{{ path('match_index') }}">Ver partidos</a></li>
+                        </ul>
+                    </li>
                     <li class=""><a><i class="fa fa-usd"></i>Dinero<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none;">
                             <li><a href="{{ path('spend_new') }}">Agregar recaudación</a></li>

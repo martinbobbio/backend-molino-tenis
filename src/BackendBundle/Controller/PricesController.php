@@ -14,12 +14,18 @@ class PricesController extends Controller
 
     //---------------------INDEX------------------------------
 
-    public function indexAction(){
+    public function indexAction(Request $request){
         
         $con = $this->getDoctrine()->getManager();
-        $prices = $con->getRepository('BackendBundle:Prices')->findAll();
+        $pricesQuery = $con->getRepository('BackendBundle:Prices')->findAll();
 
         $delete_form = $this->createCustomForm(':ID','DELETE','prices_delete');
+
+        $paginator  = $this->get('knp_paginator');
+        $prices = $paginator->paginate(
+          $pricesQuery,
+          $request->query->getInt('page', 1),
+          20);
 
         return $this->render('prices/index.html.twig', array('prices' => $prices,'delete_form' => $delete_form->createView() ));
 
