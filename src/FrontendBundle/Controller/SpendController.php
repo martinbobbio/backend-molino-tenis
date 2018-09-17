@@ -109,7 +109,7 @@ class SpendController extends Controller
     private function createLog($type, $user){
         $log = new Log();
         $log = $log->createLog($type,"recaudacion",$user);
-        $this->getDoctrine()->getManager()->persist($log)->flush();
+        $this->getDoctrine()->getManager()->persist($log);
         $this->getDoctrine()->getManager()->flush();
     }
 

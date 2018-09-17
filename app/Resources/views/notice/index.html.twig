@@ -13,7 +13,7 @@
 
     <style>
         .left_col{
-            height:1300px;
+            height:4300px;
         }
     </style>
 
@@ -47,7 +47,7 @@
             <tr data-id="{{ n.id }}">
                 <td>{{ n.id }}</td>
                 <td>{{ n.title }}</td>
-                <td>{{ n.description }}</td>
+                <td>{{ n.description|raw }}</td>
                 <td><a href="{{ asset(n.imgSrc)}}">{{ n.imgSrc }}</a></td>
                 <td>{{ n.createAt|date('Y-m-d H:i:s')}}</td>
                 <td>{{ n.updateAt|date('Y-m-d H:i:s')}}</td>
