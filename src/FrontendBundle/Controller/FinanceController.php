@@ -28,6 +28,7 @@ class FinanceController extends Controller
             $arr1['title'] = $f->getTitle();
             $arr1['count'] = $f->getCount();
             $arr1['total'] = $f->getTotal();
+            $arr1['lastDate'] = $f->getUpdateAt()->modify('-3 hours')->format('Y-m-d H:i');
             $arr[] = $arr1;
         }
 

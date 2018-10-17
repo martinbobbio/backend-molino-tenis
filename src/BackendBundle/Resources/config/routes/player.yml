@@ -1,0 +1,19 @@
+player_index:
+    path:     /player
+    defaults: { _controller: "BackendBundle:Player:index" }
+    methods:  GET
+
+player_edit:
+    path:     /player/{id}/edit
+    defaults: { _controller: "BackendBundle:Player:edit" }
+    methods:  [GET, POST]
+
+player_delete:
+    path:     /player/{id}/delete
+    defaults: { _controller: "BackendBundle:Player:delete" }
+
+
+player_new:
+    path:     /player/new
+    defaults: { _controller: "BackendBundle:Player:new" }
+    methods:  [GET, POST]

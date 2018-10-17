@@ -12,7 +12,6 @@ notice_delete:
     path:     /notice/{id}/delete
     defaults: { _controller: "BackendBundle:Notice:delete" }
 
-
 notice_new:
     path:     /notice/new
     defaults: { _controller: "BackendBundle:Notice:new" }

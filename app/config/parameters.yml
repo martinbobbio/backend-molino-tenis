@@ -1,6 +1,6 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: mysql.hostinger.com.ar	
+    database_host: mysql.hostinger.com.ar
     database_port: null
     database_name: u593736619_tenis
     database_user: u593736619_tenis
@@ -10,6 +10,3 @@ parameters:
     mailer_user: null
     mailer_password: null
     secret: ThisTokenIsNotSoSecretChangeIt
-    
-
-    

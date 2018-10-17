@@ -14,12 +14,18 @@ class SpendController extends Controller
 
     //---------------------INDEX------------------------------
 
-    public function indexAction(){
+    public function indexAction(Request $request){
         
         $con = $this->getDoctrine()->getManager();
-        $spend = $con->getRepository('BackendBundle:Spend')->findAll();
+        $spendQuery = $con->getRepository('BackendBundle:Spend')->findAll();
 
         $delete_form = $this->createCustomForm(':ID','DELETE','spend_delete');
+
+        $paginator  = $this->get('knp_paginator');
+        $spend = $paginator->paginate(
+          $spendQuery,
+          $request->query->getInt('page', 1),
+          20);
 
         return $this->render('spend/index.html.twig', array('spend' => $spend,'delete_form' => $delete_form->createView() ));
 

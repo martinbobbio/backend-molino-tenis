@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Ver rankings{% endblock %}
+
+{% block page_title %}<h1 class="text-default">Rankings</h1>{% endblock %}
+
+{% block page_title_right %}
+    <a href="{{ path('ranking_new') }}" class="btn btn-success btn">Asignar jugador</a>
+{% endblock %}
+
+
+{% block page_content %}
+
+    <style>
+        .left_col{
+            height:1300px;
+        }
+    </style>
+
+    <br><br>
+
+    
+    <h3>Categoria A</h3>
+     <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+            <tr>
+                <th>Jugador</th>
+                <th>Puntos</th>
+                <th>Categoria</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Jugador</th>
+                <th>Puntos</th>
+                <th>Categoria</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for r in ranking %}
+                {% if r.category == 'Categoria A' %}
+                <tr data-id="{{ r.id }}">
+                    <td>
+                        <img src="{{ asset('/web/')}}{{r.player.imgSrc}}" class="img-circle" height="50" width="50">
+                        <span> {{r.player.name}}</span>
+                    </td>
+                    <td>{{ r.points }}</td>
+                    <td>{{ r.category }}</td>
+                    <td>{{ r.createAt|date('Y-m-d H:i:s')}}</td>
+                    <td>{{ r.updateAt|date('Y-m-d H:i:s')}}</td>
+                    <td>
+                    <a href="{{ path('ranking_edit', {id: r.id})}}" class="btn btn-xs btn-primary">Editar</a>
+                    <a href="#" class="btn btn-xs btn-danger btn-delete">Eliminar</a>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    <h3>Categoria B</h3>
+     <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+            <tr>
+                <th>Jugador</th>
+                <th>Puntos</th>
+                <th>Categoria</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Jugador</th>
+                <th>Puntos</th>
+                <th>Categoria</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for r in ranking %}
+                {% if r.category == 'Categoria B' %}
+                <tr data-id="{{ r.id }}">
+                    <td>
+                        <img src="{{ asset('/web/')}}{{r.player.imgSrc}}" class="img-circle" height="50" width="50">
+                        <span> {{r.player.name}}</span>
+                    </td>
+                    <td>{{ r.points }}</td>
+                    <td>{{ r.category }}</td>
+                    <td>{{ r.createAt|date('Y-m-d H:i:s')}}</td>
+                    <td>{{ r.updateAt|date('Y-m-d H:i:s')}}</td>
+                    <td>
+                    <a href="{{ path('ranking_edit', {id: r.id})}}" class="btn btn-xs btn-primary">Editar</a>
+                    <a href="#" class="btn btn-xs btn-danger btn-delete">Eliminar</a>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    <h3>Categoria C</h3>
+     <table id="example" class="display" cellspacing="0" width="100%" >
+        <thead>
+            <tr>
+                <th>Jugador</th>
+                <th>Puntos</th>
+                <th>Categoria</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Jugador</th>
+                <th>Puntos</th>
+                <th>Categoria</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Acciones</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            {% for r in ranking %}
+                {% if r.category == 'Categoria C' %}
+                <tr data-id="{{ r.id }}">
+                    <td>
+                        <img src="{{ asset('/web/')}}{{r.player.imgSrc}}" class="img-circle" height="50" width="50">
+                        <span> {{r.player.name}}</span>
+                    </td>
+                    <td>{{ r.points }}</td>
+                    <td>{{ r.category }}</td>
+                    <td>{{ r.createAt|date('Y-m-d H:i:s')}}</td>
+                    <td>{{ r.updateAt|date('Y-m-d H:i:s')}}</td>
+                    <td>
+                    <a href="{{ path('ranking_edit', {id: r.id})}}" class="btn btn-xs btn-primary">Editar</a>
+                    <a href="#" class="btn btn-xs btn-danger btn-delete">Eliminar</a>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            
+        </tbody>
+    </table>
+
+    {{ include('Forms/formDelete.html.twig', {form: delete_form, message: 'Estás seguro que quieres borrar el ranking?', id: 'form-delete', with_submit: false}) }}
+    <script src="{{ asset('js/delete-ajax.js') }}"></script>
+ 
+{% endblock %}

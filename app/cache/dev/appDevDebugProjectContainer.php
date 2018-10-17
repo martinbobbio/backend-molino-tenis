@@ -177,10 +177,8 @@ class appDevDebugProjectContainer extends Container
             'knp_paginator.twig.extension.pagination' => 'getKnpPaginator_Twig_Extension_PaginationService',
             'locale_listener' => 'getLocaleListenerService',
             'logger' => 'getLoggerService',
-            'monolog.activation_strategy.not_found' => 'getMonolog_ActivationStrategy_NotFoundService',
             'monolog.handler.console' => 'getMonolog_Handler_ConsoleService',
             'monolog.handler.debug' => 'getMonolog_Handler_DebugService',
-            'monolog.handler.fingers_crossed.error_level_activation_strategy' => 'getMonolog_Handler_FingersCrossed_ErrorLevelActivationStrategyService',
             'monolog.handler.main' => 'getMonolog_Handler_MainService',
             'monolog.handler.null_internal' => 'getMonolog_Handler_NullInternalService',
             'monolog.logger.doctrine' => 'getMonolog_Logger_DoctrineService',
@@ -195,11 +193,14 @@ class appDevDebugProjectContainer extends Container
             'oneup_uploader.chunk_manager' => 'getOneupUploader_ChunkManagerService',
             'oneup_uploader.chunks_storage' => 'getOneupUploader_ChunksStorageService',
             'oneup_uploader.controller.notices' => 'getOneupUploader_Controller_NoticesService',
+            'oneup_uploader.controller.players' => 'getOneupUploader_Controller_PlayersService',
+            'oneup_uploader.error_handler.blueimp' => 'getOneupUploader_ErrorHandler_BlueimpService',
             'oneup_uploader.namer.uniqid' => 'getOneupUploader_Namer_UniqidService',
             'oneup_uploader.namer.urlsafe' => 'getOneupUploader_Namer_UrlsafeService',
             'oneup_uploader.orphanage_manager' => 'getOneupUploader_OrphanageManagerService',
             'oneup_uploader.routing.loader' => 'getOneupUploader_Routing_LoaderService',
             'oneup_uploader.storage.notices' => 'getOneupUploader_Storage_NoticesService',
+            'oneup_uploader.storage.players' => 'getOneupUploader_Storage_PlayersService',
             'oneup_uploader.templating.uploader_helper' => 'getOneupUploader_Templating_UploaderHelperService',
             'oneup_uploader.twig.extension.uploader' => 'getOneupUploader_Twig_Extension_UploaderService',
             'oneup_uploader.validation_listener.allowed_mimetype' => 'getOneupUploader_ValidationListener_AllowedMimetypeService',
@@ -1968,16 +1969,6 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
-     * Gets the public 'monolog.activation_strategy.not_found' shared service.
-     *
-     * @return \Symfony\Bridge\Monolog\Handler\FingersCrossed\NotFoundActivationStrategy
-     */
-    protected function getMonolog_ActivationStrategy_NotFoundService()
-    {
-        return $this->services['monolog.activation_strategy.not_found'] = new \Symfony\Bridge\Monolog\Handler\FingersCrossed\NotFoundActivationStrategy();
-    }
-
-    /**
      * Gets the public 'monolog.handler.console' shared service.
      *
      * @return \Symfony\Bridge\Monolog\Handler\ConsoleHandler
@@ -1999,16 +1990,6 @@ class appDevDebugProjectContainer extends Container
     protected function getMonolog_Handler_DebugService()
     {
         return $this->services['monolog.handler.debug'] = new \Symfony\Bridge\Monolog\Handler\DebugHandler(100, true);
-    }
-
-    /**
-     * Gets the public 'monolog.handler.fingers_crossed.error_level_activation_strategy' shared service.
-     *
-     * @return \Monolog\Handler\FingersCrossed\ErrorLevelActivationStrategy
-     */
-    protected function getMonolog_Handler_FingersCrossed_ErrorLevelActivationStrategyService()
-    {
-        return $this->services['monolog.handler.fingers_crossed.error_level_activation_strategy'] = new \Monolog\Handler\FingersCrossed\ErrorLevelActivationStrategy();
     }
 
     /**
@@ -2187,7 +2168,17 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getOneupUploader_Controller_NoticesService()
     {
-        return $this->services['oneup_uploader.controller.notices'] = new \Oneup\UploaderBundle\Controller\BlueimpController($this, $this->get('oneup_uploader.storage.notices'), new \Oneup\UploaderBundle\Uploader\ErrorHandler\BlueimpErrorHandler($this->get('translator')), array('frontend' => 'blueimp', 'storage' => array('directory' => ($this->targetDirs[2].'/../web/uploads/notice'), 'service' => NULL, 'type' => 'filesystem', 'filesystem' => NULL, 'stream_wrapper' => NULL, 'sync_buffer_size' => '100K'), 'custom_frontend' => array('name' => NULL, 'class' => NULL), 'route_prefix' => '', 'endpoints' => array('upload' => NULL, 'progress' => NULL, 'cancel' => NULL), 'allowed_mimetypes' => array(), 'disallowed_mimetypes' => array(), 'error_handler' => NULL, 'max_size' => 9223372036854775807, 'use_orphanage' => false, 'enable_progress' => false, 'enable_cancelation' => false, 'namer' => 'oneup_uploader.namer.uniqid', 'root_folder' => false), 'notices');
+        return $this->services['oneup_uploader.controller.notices'] = new \Oneup\UploaderBundle\Controller\BlueimpController($this, $this->get('oneup_uploader.storage.notices'), $this->get('oneup_uploader.error_handler.blueimp'), array('frontend' => 'blueimp', 'storage' => array('directory' => ($this->targetDirs[2].'/../web/uploads/notice'), 'service' => NULL, 'type' => 'filesystem', 'filesystem' => NULL, 'stream_wrapper' => NULL, 'sync_buffer_size' => '100K'), 'custom_frontend' => array('name' => NULL, 'class' => NULL), 'route_prefix' => '', 'endpoints' => array('upload' => NULL, 'progress' => NULL, 'cancel' => NULL), 'allowed_mimetypes' => array(), 'disallowed_mimetypes' => array(), 'error_handler' => NULL, 'max_size' => 9223372036854775807, 'use_orphanage' => false, 'enable_progress' => false, 'enable_cancelation' => false, 'namer' => 'oneup_uploader.namer.uniqid', 'root_folder' => false), 'notices');
+    }
+
+    /**
+     * Gets the public 'oneup_uploader.controller.players' shared service.
+     *
+     * @return \Oneup\UploaderBundle\Controller\BlueimpController
+     */
+    protected function getOneupUploader_Controller_PlayersService()
+    {
+        return $this->services['oneup_uploader.controller.players'] = new \Oneup\UploaderBundle\Controller\BlueimpController($this, $this->get('oneup_uploader.storage.players'), $this->get('oneup_uploader.error_handler.blueimp'), array('frontend' => 'blueimp', 'storage' => array('directory' => ($this->targetDirs[2].'/../web/uploads/player'), 'service' => NULL, 'type' => 'filesystem', 'filesystem' => NULL, 'stream_wrapper' => NULL, 'sync_buffer_size' => '100K'), 'custom_frontend' => array('name' => NULL, 'class' => NULL), 'route_prefix' => '', 'endpoints' => array('upload' => NULL, 'progress' => NULL, 'cancel' => NULL), 'allowed_mimetypes' => array(), 'disallowed_mimetypes' => array(), 'error_handler' => NULL, 'max_size' => 9223372036854775807, 'use_orphanage' => false, 'enable_progress' => false, 'enable_cancelation' => false, 'namer' => 'oneup_uploader.namer.uniqid', 'root_folder' => false), 'players');
     }
 
     /**
@@ -2227,7 +2218,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getOneupUploader_Routing_LoaderService()
     {
-        return $this->services['oneup_uploader.routing.loader'] = new \Oneup\UploaderBundle\Routing\RouteLoader(array('notices' => array(0 => 'oneup_uploader.controller.notices', 1 => array('enable_progress' => false, 'enable_cancelation' => false, 'route_prefix' => '', 'endpoints' => array('upload' => NULL, 'progress' => NULL, 'cancel' => NULL)))));
+        return $this->services['oneup_uploader.routing.loader'] = new \Oneup\UploaderBundle\Routing\RouteLoader(array('notices' => array(0 => 'oneup_uploader.controller.notices', 1 => array('enable_progress' => false, 'enable_cancelation' => false, 'route_prefix' => '', 'endpoints' => array('upload' => NULL, 'progress' => NULL, 'cancel' => NULL))), 'players' => array(0 => 'oneup_uploader.controller.players', 1 => array('enable_progress' => false, 'enable_cancelation' => false, 'route_prefix' => '', 'endpoints' => array('upload' => NULL, 'progress' => NULL, 'cancel' => NULL)))));
     }
 
     /**
@@ -2241,13 +2232,23 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the public 'oneup_uploader.storage.players' shared service.
+     *
+     * @return \Oneup\UploaderBundle\Uploader\Storage\FilesystemStorage
+     */
+    protected function getOneupUploader_Storage_PlayersService()
+    {
+        return $this->services['oneup_uploader.storage.players'] = new \Oneup\UploaderBundle\Uploader\Storage\FilesystemStorage(($this->targetDirs[2].'/../web/uploads/player'));
+    }
+
+    /**
      * Gets the public 'oneup_uploader.templating.uploader_helper' shared service.
      *
      * @return \Oneup\UploaderBundle\Templating\Helper\UploaderHelper
      */
     protected function getOneupUploader_Templating_UploaderHelperService()
     {
-        return $this->services['oneup_uploader.templating.uploader_helper'] = new \Oneup\UploaderBundle\Templating\Helper\UploaderHelper($this->get('router'), array('notices' => 134217728.0));
+        return $this->services['oneup_uploader.templating.uploader_helper'] = new \Oneup\UploaderBundle\Templating\Helper\UploaderHelper($this->get('router'), array('notices' => 134217728.0, 'players' => 134217728.0));
     }
 
     /**
@@ -2428,9 +2429,9 @@ class appDevDebugProjectContainer extends Container
         $d->addLoader(new \Symfony\Component\Routing\Loader\PhpFileLoader($a));
         $d->addLoader(new \Symfony\Component\Routing\Loader\DirectoryLoader($a));
         $d->addLoader(new \Symfony\Component\Routing\Loader\DependencyInjection\ServiceRouterLoader($this));
+        $d->addLoader($c);
         $d->addLoader(new \Symfony\Component\Routing\Loader\AnnotationDirectoryLoader($a, $c));
         $d->addLoader(new \Symfony\Component\Routing\Loader\AnnotationFileLoader($a, $c));
-        $d->addLoader($c);
         $d->addLoader($this->get('oneup_uploader.routing.loader'));
 
         return $this->services['routing.loader'] = new \Symfony\Bundle\FrameworkBundle\Routing\DelegatingLoader($this->get('controller_name_converter'), $d);
@@ -2550,7 +2551,7 @@ class appDevDebugProjectContainer extends Container
         $o = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($e, $l, array(), $a);
         $o->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5b77388306cc55.34537151', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, '/login', false), NULL, NULL, $a, false));
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($k, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $this->get('fos_user.user_provider.username')), 'main', $a, $c), 2 => $m, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $f, $this->get('security.authentication.session_strategy'), $l, 'main', $n, $o, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, $this->get('security.csrf.token_manager')), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5ba0021fc25e17.24550816', $a, $f), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $k, $f)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $l, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($e, $l, '/login', false), NULL, NULL, $a, false));
     }
 
     /**
@@ -3621,6 +3622,16 @@ class appDevDebugProjectContainer extends Container
     }
 
     /**
+     * Gets the private 'oneup_uploader.error_handler.blueimp' shared service.
+     *
+     * @return \Oneup\UploaderBundle\Uploader\ErrorHandler\BlueimpErrorHandler
+     */
+    protected function getOneupUploader_ErrorHandler_BlueimpService()
+    {
+        return $this->services['oneup_uploader.error_handler.blueimp'] = new \Oneup\UploaderBundle\Uploader\ErrorHandler\BlueimpErrorHandler($this->get('translator'));
+    }
+
+    /**
      * Gets the private 'router.request_context' shared service.
      *
      * @return \Symfony\Component\Routing\RequestContext
@@ -3654,7 +3665,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_Authentication_ManagerService()
     {
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5b77388306cc55.34537151')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $this->get('security.user_checker.main'), 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5ba0021fc25e17.24550816')), true);
 
         $instance->setEventDispatcher($this->get('debug.event_dispatcher'));
 
@@ -4478,12 +4489,80 @@ class appDevDebugProjectContainer extends Container
                 'namer' => 'oneup_uploader.namer.uniqid',
                 'root_folder' => false,
             ),
+            'oneup_uploader.config.players' => array(
+                'frontend' => 'blueimp',
+                'storage' => array(
+                    'directory' => ($this->targetDirs[2].'/../web/uploads/player/'),
+                    'service' => NULL,
+                    'type' => 'filesystem',
+                    'filesystem' => NULL,
+                    'stream_wrapper' => NULL,
+                    'sync_buffer_size' => '100K',
+                ),
+                'custom_frontend' => array(
+                    'name' => NULL,
+                    'class' => NULL,
+                ),
+                'route_prefix' => '',
+                'endpoints' => array(
+                    'upload' => NULL,
+                    'progress' => NULL,
+                    'cancel' => NULL,
+                ),
+                'allowed_mimetypes' => array(
+
+                ),
+                'disallowed_mimetypes' => array(
+
+                ),
+                'error_handler' => NULL,
+                'max_size' => 9223372036854775807,
+                'use_orphanage' => false,
+                'enable_progress' => false,
+                'enable_cancelation' => false,
+                'namer' => 'oneup_uploader.namer.uniqid',
+                'root_folder' => false,
+            ),
             'oneup_uploader.config' => array(
                 'mappings' => array(
                     'notices' => array(
                         'frontend' => 'blueimp',
                         'storage' => array(
                             'directory' => ($this->targetDirs[2].'/../web/uploads/notice/'),
+                            'service' => NULL,
+                            'type' => 'filesystem',
+                            'filesystem' => NULL,
+                            'stream_wrapper' => NULL,
+                            'sync_buffer_size' => '100K',
+                        ),
+                        'custom_frontend' => array(
+                            'name' => NULL,
+                            'class' => NULL,
+                        ),
+                        'route_prefix' => '',
+                        'endpoints' => array(
+                            'upload' => NULL,
+                            'progress' => NULL,
+                            'cancel' => NULL,
+                        ),
+                        'allowed_mimetypes' => array(
+
+                        ),
+                        'disallowed_mimetypes' => array(
+
+                        ),
+                        'error_handler' => NULL,
+                        'max_size' => 9223372036854775807,
+                        'use_orphanage' => false,
+                        'enable_progress' => false,
+                        'enable_cancelation' => false,
+                        'namer' => 'oneup_uploader.namer.uniqid',
+                        'root_folder' => false,
+                    ),
+                    'players' => array(
+                        'frontend' => 'blueimp',
+                        'storage' => array(
+                            'directory' => ($this->targetDirs[2].'/../web/uploads/player/'),
                             'service' => NULL,
                             'type' => 'filesystem',
                             'filesystem' => NULL,
@@ -4547,9 +4626,23 @@ class appDevDebugProjectContainer extends Container
                         ),
                     ),
                 ),
+                'players' => array(
+                    0 => 'oneup_uploader.controller.players',
+                    1 => array(
+                        'enable_progress' => false,
+                        'enable_cancelation' => false,
+                        'route_prefix' => '',
+                        'endpoints' => array(
+                            'upload' => NULL,
+                            'progress' => NULL,
+                            'cancel' => NULL,
+                        ),
+                    ),
+                ),
             ),
             'oneup_uploader.maxsize' => array(
                 'notices' => 134217728.0,
+                'players' => 134217728.0,
             ),
             'knp_paginator.class' => 'Knp\\Component\\Pager\\Paginator',
             'knp_paginator.helper.processor.class' => 'Knp\\Bundle\\PaginatorBundle\\Helper\\Processor',

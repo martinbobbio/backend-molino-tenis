@@ -27,7 +27,7 @@ class EventType extends AbstractType
             'html5' => false,
             'label' => 'Fecha',
             'attr' => ['class' => 'js-datepicker',  'placeholder' => 'Elegir fecha'],))
-            ->add('hour', ChoiceType::class, array(
+        ->add('hour', ChoiceType::class, array(
             'choices'  => array(                                             
                 '07:00' => '07:00hs','07:30' => '07:30hs',
                 '08:00' => '09:00hs','08:30' => '08:30hs',

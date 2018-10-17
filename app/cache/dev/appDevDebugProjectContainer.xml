@@ -680,12 +680,72 @@
       <parameter key="namer">oneup_uploader.namer.uniqid</parameter>
       <parameter key="root_folder">false</parameter>
     </parameter>
+    <parameter key="oneup_uploader.config.players" type="collection">
+      <parameter key="frontend">blueimp</parameter>
+      <parameter key="storage" type="collection">
+        <parameter key="directory">/home/u593736619/public_html/admin/app/../web/uploads/player/</parameter>
+        <parameter key="service">null</parameter>
+        <parameter key="type">filesystem</parameter>
+        <parameter key="filesystem">null</parameter>
+        <parameter key="stream_wrapper">null</parameter>
+        <parameter key="sync_buffer_size">100K</parameter>
+      </parameter>
+      <parameter key="custom_frontend" type="collection">
+        <parameter key="name">null</parameter>
+        <parameter key="class">null</parameter>
+      </parameter>
+      <parameter key="route_prefix"></parameter>
+      <parameter key="endpoints" type="collection">
+        <parameter key="upload">null</parameter>
+        <parameter key="progress">null</parameter>
+        <parameter key="cancel">null</parameter>
+      </parameter>
+      <parameter key="allowed_mimetypes" type="collection"/>
+      <parameter key="disallowed_mimetypes" type="collection"/>
+      <parameter key="error_handler">null</parameter>
+      <parameter key="max_size">9223372036854775807</parameter>
+      <parameter key="use_orphanage">false</parameter>
+      <parameter key="enable_progress">false</parameter>
+      <parameter key="enable_cancelation">false</parameter>
+      <parameter key="namer">oneup_uploader.namer.uniqid</parameter>
+      <parameter key="root_folder">false</parameter>
+    </parameter>
     <parameter key="oneup_uploader.config" type="collection">
       <parameter key="mappings" type="collection">
         <parameter key="notices" type="collection">
           <parameter key="frontend">blueimp</parameter>
           <parameter key="storage" type="collection">
             <parameter key="directory">/home/u593736619/public_html/admin/app/../web/uploads/notice/</parameter>
+            <parameter key="service">null</parameter>
+            <parameter key="type">filesystem</parameter>
+            <parameter key="filesystem">null</parameter>
+            <parameter key="stream_wrapper">null</parameter>
+            <parameter key="sync_buffer_size">100K</parameter>
+          </parameter>
+          <parameter key="custom_frontend" type="collection">
+            <parameter key="name">null</parameter>
+            <parameter key="class">null</parameter>
+          </parameter>
+          <parameter key="route_prefix"></parameter>
+          <parameter key="endpoints" type="collection">
+            <parameter key="upload">null</parameter>
+            <parameter key="progress">null</parameter>
+            <parameter key="cancel">null</parameter>
+          </parameter>
+          <parameter key="allowed_mimetypes" type="collection"/>
+          <parameter key="disallowed_mimetypes" type="collection"/>
+          <parameter key="error_handler">null</parameter>
+          <parameter key="max_size">9223372036854775807</parameter>
+          <parameter key="use_orphanage">false</parameter>
+          <parameter key="enable_progress">false</parameter>
+          <parameter key="enable_cancelation">false</parameter>
+          <parameter key="namer">oneup_uploader.namer.uniqid</parameter>
+          <parameter key="root_folder">false</parameter>
+        </parameter>
+        <parameter key="players" type="collection">
+          <parameter key="frontend">blueimp</parameter>
+          <parameter key="storage" type="collection">
+            <parameter key="directory">/home/u593736619/public_html/admin/app/../web/uploads/player/</parameter>
             <parameter key="service">null</parameter>
             <parameter key="type">filesystem</parameter>
             <parameter key="filesystem">null</parameter>
@@ -745,9 +805,23 @@
           </parameter>
         </parameter>
       </parameter>
+      <parameter key="players" type="collection">
+        <parameter>oneup_uploader.controller.players</parameter>
+        <parameter type="collection">
+          <parameter key="enable_progress">false</parameter>
+          <parameter key="enable_cancelation">false</parameter>
+          <parameter key="route_prefix"></parameter>
+          <parameter key="endpoints" type="collection">
+            <parameter key="upload">null</parameter>
+            <parameter key="progress">null</parameter>
+            <parameter key="cancel">null</parameter>
+          </parameter>
+        </parameter>
+      </parameter>
     </parameter>
     <parameter key="oneup_uploader.maxsize" type="collection">
       <parameter key="notices">134217728</parameter>
+      <parameter key="players">134217728</parameter>
     </parameter>
     <parameter key="knp_paginator.class">Knp\Component\Pager\Paginator</parameter>
     <parameter key="knp_paginator.helper.processor.class">Knp\Bundle\PaginatorBundle\Helper\Processor</parameter>
@@ -2215,6 +2289,14 @@
           </call>
           <call method="addLoader">
             <argument type="service">
+              <service class="Sensio\Bundle\FrameworkExtraBundle\Routing\AnnotatedRouteControllerLoader" public="false">
+                <tag name="routing.loader"/>
+                <argument type="service" id="annotation_reader"/>
+              </service>
+            </argument>
+          </call>
+          <call method="addLoader">
+            <argument type="service">
               <service class="Symfony\Component\Routing\Loader\AnnotationDirectoryLoader" public="false">
                 <tag name="routing.loader"/>
                 <argument type="service" id="file_locator"/>
@@ -2238,14 +2320,6 @@
                     <argument type="service" id="annotation_reader"/>
                   </service>
                 </argument>
-              </service>
-            </argument>
-          </call>
-          <call method="addLoader">
-            <argument type="service">
-              <service class="Sensio\Bundle\FrameworkExtraBundle\Routing\AnnotatedRouteControllerLoader" public="false">
-                <tag name="routing.loader"/>
-                <argument type="service" id="annotation_reader"/>
               </service>
             </argument>
           </call>
@@ -2500,7 +2574,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5b77388306cc55.34537151</argument>
+            <argument>5ba0021fc25e17.24550816</argument>
           </service>
         </argument>
       </argument>
@@ -2789,7 +2863,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5b77388306cc55.34537151</argument>
+            <argument>5ba0021fc25e17.24550816</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3128,8 +3202,6 @@
       <argument type="service" id="http_kernel"/>
       <argument>twig.controller.exception:showAction</argument>
     </service>
-    <service id="monolog.activation_strategy.not_found" class="Symfony\Bridge\Monolog\Handler\FingersCrossed\NotFoundActivationStrategy"/>
-    <service id="monolog.handler.fingers_crossed.error_level_activation_strategy" class="Monolog\Handler\FingersCrossed\ErrorLevelActivationStrategy"/>
     <service id="monolog.processor.psr_log_message" class="Monolog\Processor\PsrLogMessageProcessor" public="false"/>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
       <argument>/home/u593736619/public_html/admin/app/logs/dev.log</argument>
@@ -3633,6 +3705,19 @@
             </argument>
           </argument>
         </argument>
+        <argument key="players" type="collection">
+          <argument>oneup_uploader.controller.players</argument>
+          <argument type="collection">
+            <argument key="enable_progress">false</argument>
+            <argument key="enable_cancelation">false</argument>
+            <argument key="route_prefix"></argument>
+            <argument key="endpoints" type="collection">
+              <argument key="upload">null</argument>
+              <argument key="progress">null</argument>
+              <argument key="cancel">null</argument>
+            </argument>
+          </argument>
+        </argument>
       </argument>
     </service>
     <service id="oneup_uploader.templating.uploader_helper" class="Oneup\UploaderBundle\Templating\Helper\UploaderHelper">
@@ -3640,6 +3725,7 @@
       <argument type="service" id="router"/>
       <argument type="collection">
         <argument key="notices">134217728</argument>
+        <argument key="players">134217728</argument>
       </argument>
     </service>
     <service id="oneup_uploader.validation_listener.max_size" class="Oneup\UploaderBundle\EventListener\MaxSizeValidationListener">
@@ -3650,6 +3736,9 @@
     </service>
     <service id="oneup_uploader.validation_listener.disallowed_mimetype" class="Oneup\UploaderBundle\EventListener\DisallowedMimetypeValidationListener">
       <tag name="kernel.event_listener" event="oneup_uploader.validation" method="onValidate"/>
+    </service>
+    <service id="oneup_uploader.error_handler.blueimp" class="Oneup\UploaderBundle\Uploader\ErrorHandler\BlueimpErrorHandler" public="false">
+      <argument type="service" id="translator"/>
     </service>
     <service id="oneup_uploader.twig.extension.uploader" class="Oneup\UploaderBundle\Twig\Extension\UploaderExtension">
       <tag name="twig.extension"/>
@@ -3665,11 +3754,7 @@
       <tag name="oneup_uploader.routable" type="notices"/>
       <argument type="service" id="service_container"/>
       <argument type="service" id="oneup_uploader.storage.notices"/>
-      <argument type="service">
-        <service class="Oneup\UploaderBundle\Uploader\ErrorHandler\BlueimpErrorHandler" public="false">
-          <argument type="service" id="translator"/>
-        </service>
-      </argument>
+      <argument type="service" id="oneup_uploader.error_handler.blueimp"/>
       <argument type="collection">
         <argument key="frontend">blueimp</argument>
         <argument key="storage" type="collection">
@@ -3701,6 +3786,46 @@
         <argument key="root_folder">false</argument>
       </argument>
       <argument>notices</argument>
+    </service>
+    <service id="oneup_uploader.storage.players" class="Oneup\UploaderBundle\Uploader\Storage\FilesystemStorage">
+      <argument>/home/u593736619/public_html/admin/app/../web/uploads/player</argument>
+    </service>
+    <service id="oneup_uploader.controller.players" class="Oneup\UploaderBundle\Controller\BlueimpController">
+      <tag name="oneup_uploader.routable" type="players"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="oneup_uploader.storage.players"/>
+      <argument type="service" id="oneup_uploader.error_handler.blueimp"/>
+      <argument type="collection">
+        <argument key="frontend">blueimp</argument>
+        <argument key="storage" type="collection">
+          <argument key="directory">/home/u593736619/public_html/admin/app/../web/uploads/player</argument>
+          <argument key="service">null</argument>
+          <argument key="type">filesystem</argument>
+          <argument key="filesystem">null</argument>
+          <argument key="stream_wrapper">null</argument>
+          <argument key="sync_buffer_size">100K</argument>
+        </argument>
+        <argument key="custom_frontend" type="collection">
+          <argument key="name">null</argument>
+          <argument key="class">null</argument>
+        </argument>
+        <argument key="route_prefix"></argument>
+        <argument key="endpoints" type="collection">
+          <argument key="upload">null</argument>
+          <argument key="progress">null</argument>
+          <argument key="cancel">null</argument>
+        </argument>
+        <argument key="allowed_mimetypes" type="collection"/>
+        <argument key="disallowed_mimetypes" type="collection"/>
+        <argument key="error_handler">null</argument>
+        <argument key="max_size">9223372036854775807</argument>
+        <argument key="use_orphanage">false</argument>
+        <argument key="enable_progress">false</argument>
+        <argument key="enable_cancelation">false</argument>
+        <argument key="namer">oneup_uploader.namer.uniqid</argument>
+        <argument key="root_folder">false</argument>
+      </argument>
+      <argument>players</argument>
     </service>
     <service id="knp_paginator" class="Knp\Component\Pager\Paginator" lazy="true">
       <argument type="service" id="debug.event_dispatcher"/>
