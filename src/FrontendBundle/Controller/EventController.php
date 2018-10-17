@@ -17,7 +17,7 @@ class EventController extends Controller
         header("Access-Control-Allow-Origin: *");
 
         $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('BackendBundle:Event')->findAll();
+        $event = $em->createQuery('SELECT e FROM BackendBundle:Event e ORDER BY e.id DESC')->setMaxResults(150)->getResult();
         $typeEvent = $em->getRepository('BackendBundle:TypeEvent')->findAll();
 
         $arr = [];
