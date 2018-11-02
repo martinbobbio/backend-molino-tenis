@@ -15,7 +15,7 @@ Conecta la pagina web y la app con ApiRest hecho en symfony
 ## Capturas
 
 ![Image of pagina](web/images/admin1.png)
-![Image of pagina](web/images/admin2.png)
 ![Image of pagina](web/images/admin3.png)
 ![Image of pagina](web/images/admin4.png)
+![Image of pagina](web/images/admin2.png)
 
