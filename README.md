@@ -16,6 +16,8 @@
 
 Sistema para el Molino tenis de Hurlingham.
 Conecta la pagina web y la app con ApiRest hecho en symfony
+<br>
+Tecnologias usadas: Symfony y Bootstrap
 
 # Capturas
 
