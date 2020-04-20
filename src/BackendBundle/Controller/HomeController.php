@@ -15,6 +15,6 @@ class HomeController extends Controller
 
     public function redirectLoginAction(){
 
-        return $this->redirect('/web/app_dev.php/admin/home');
+        return $this->redirect('/admin/home');
     }
 }
