@@ -32,7 +32,7 @@ class Log
 
      /**
      * @var string
-     * @ORM\Column(name="title", type="string", length=50, nullable=false)
+     * @ORM\Column(name="title", type="string", length=200, nullable=false)
      */
     private $title;
 
